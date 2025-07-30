@@ -79,3 +79,34 @@ button[value="="]:hover,
 button:nth-child(4n):hover {
   background-color: #5548ff;
 }
+
+/* === Анимация появления кнопок === */
+.keypad button {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.4s forwards;
+}
+
+.keypad button:nth-child(1) { animation-delay: 0.05s; }
+.keypad button:nth-child(2) { animation-delay: 0.1s; }
+.keypad button:nth-child(3) { animation-delay: 0.15s; }
+.keypad button:nth-child(4) { animation-delay: 0.2s; }
+.keypad button:nth-child(5) { animation-delay: 0.25s; }
+.keypad button:nth-child(6) { animation-delay: 0.3s; }
+.keypad button:nth-child(7) { animation-delay: 0.35s; }
+.keypad button:nth-child(8) { animation-delay: 0.4s; }
+.keypad button:nth-child(9) { animation-delay: 0.45s; }
+.keypad button:nth-child(10) { animation-delay: 0.5s; }
+.keypad button:nth-child(11) { animation-delay: 0.55s; }
+.keypad button:nth-child(12) { animation-delay: 0.6s; }
+.keypad button:nth-child(13) { animation-delay: 0.65s; }
+.keypad button:nth-child(14) { animation-delay: 0.7s; }
+.keypad button:nth-child(15) { animation-delay: 0.75s; }
+.keypad button:nth-child(16) { animation-delay: 0.8s; }
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

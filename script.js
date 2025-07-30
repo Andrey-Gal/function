@@ -42,12 +42,15 @@ buttons.forEach(button => {
     const value = button.textContent;
 
     if (value === 'C') {
-      clearInput();
-    } else if (value === '=') {
-      calculate();
-    } else {
-      addInput(value);
-    }
+  display.value = '';
+} else if (value === '=') {
+  display.value = eval(display.value);
+} else if (value === '%') {
+  display.value = parseFloat(display.value) / 100;
+} else {
+  display.value += value;
+}
+
   });
 });
 

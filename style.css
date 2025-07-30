@@ -94,3 +94,15 @@ button.equal {
     font-size: 16px;
   }
 }
+
+/* === Анимация появления кнопок === */
+.keypad button {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.keypad button.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

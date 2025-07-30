@@ -1,12 +1,13 @@
 const display = document.getElementById('display');
 const buttons = document.querySelectorAll('button');
-
 let currentInput = '';
 
+// Обновление дисплея
 function updateDisplay() {
   display.value = currentInput;
 }
 
+// Добавление символа
 function addInput(value) {
   const lastChar = currentInput.slice(-1);
 
@@ -20,6 +21,7 @@ function addInput(value) {
   updateDisplay();
 }
 
+// Вычисление
 function calculate() {
   try {
     const result = eval(currentInput);
@@ -31,56 +33,66 @@ function calculate() {
   }
 }
 
+// Очистка
 function clearInput() {
   currentInput = '';
   updateDisplay();
 }
 
-// Клики по кнопкам
+// Кнопки
 buttons.forEach(button => {
+  if (button.id === 'toggle-theme') return;
+
   button.addEventListener('click', () => {
     const value = button.textContent;
 
-   if (value === 'C') {
-  display.value = '';
-} else if (value === '=') {
-  display.value = eval(display.value);
-} else if (value === '%') {
-  display.value = parseFloat(display.value) / 100;
-} else if (value === '⌫') {
-  display.value = display.value.slice(0, -1);
-} else {
-  display.value += value;
-}
-
-
+    if (value === 'C') {
+      clearInput();
+    } else if (value === '=') {
+      calculate();
+    } else if (value === '%') {
+      currentInput = (parseFloat(currentInput) / 100).toString();
+      updateDisplay();
+    } else if (value === '⌫') {
+      currentInput = currentInput.slice(0, -1);
+      updateDisplay();
+    } else {
+      addInput(value);
+    }
   });
 });
 
-// Поддержка клавиатуры
+// Клавиатура
 document.addEventListener('keydown', (e) => {
   const key = e.key;
 
   if (!isNaN(key) || ['+', '-', '*', '/', '.'].includes(key)) {
-    display.value += key;
+    addInput(key);
   } else if (key === '%') {
-    display.value = parseFloat(display.value) / 100;
+    currentInput = (parseFloat(currentInput) / 100).toString();
+    updateDisplay();
   } else if (key === 'Enter') {
-    display.value = eval(display.value);
+    calculate();
   } else if (key === 'Backspace') {
-    display.value = display.value.slice(0, -1);
+    currentInput = currentInput.slice(0, -1);
+    updateDisplay();
   } else if (key === 'Escape') {
-    display.value = '';
+    clearInput();
   }
 });
 
-// Плавное появление кнопок при загрузке
+// Анимация появления кнопок
 window.addEventListener('DOMContentLoaded', () => {
-  const buttons = document.querySelectorAll('.keypad button');
-  buttons.forEach((btn, i) => {
+  const btns = document.querySelectorAll('.keypad button');
+  btns.forEach((btn, i) => {
     setTimeout(() => {
       btn.classList.add('visible');
-    }, i * 50); // задержка между кнопками
+    }, i * 50);
   });
 });
 
+// Переключение темы
+const toggleTheme = document.getElementById('toggle-theme');
+toggleTheme.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+});

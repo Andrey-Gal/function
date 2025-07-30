@@ -7,28 +7,25 @@
 </head>
 <body>
   <div class="container">
-    <h1>Калькулятор</h1>
-    <div class="display-wrapper">
-  <input id="display" readonly />
-</div>
+  <h1>Калькулятор</h1>
 
-    <div class="keypad">
-  <button>7</button><button>8</button><button>9</button><button class="operator">/</button>
-  <button>4</button><button>5</button><button>6</button><button class="operator">*</button>
-  <button>1</button><button>2</button><button>3</button><button class="operator">-</button>
-  <button>0</button>
-<button>.</button>
-<button class="operator">%</button>
-<button class="operator">⌫</button>
-<button>C</button>
-<button class="equal">=</button>
-<button class="operator">+</button>
+  <!-- Кнопка темы отдельно -->
+  <button id="toggle-theme">🌙 Тема</button>
 
-</div>
-
-
-
+  <div class="display-wrapper">
+    <input id="display" readonly />
   </div>
+
+  <!-- Это — кнопки калькулятора -->
+  <div class="keypad">
+    <button>7</button><button>8</button><button>9</button><button class="operator">/</button>
+    <button>4</button><button>5</button><button>6</button><button class="operator">*</button>
+    <button>1</button><button>2</button><button>3</button><button class="operator">-</button>
+    <button>0</button><button>.</button><button class="operator">%</button><button class="operator">⌫</button>
+    <button>C</button><button class="equal">=</button><button class="operator">+</button>
+  </div>
+</div>
+
   <script src="script.js"></script>
 </body>
 </html>
